@@ -4,7 +4,7 @@ This exercise checks FILL THIS IN. It is automatically graded via a workflow onc
 
 ## About this exercise
 
-:warning: A grading script exists under `.github/workflows/grading.yml`. You do not need to use this workflow for any purpose and **altering its contents will affect the repository's ability to assess your exercise and give feedback.**
+:warning: A grading script exists under `.github/workflows/grading.yml`. You do not need to use this workflow for any purpose and **altering its contents will affesadfasfct the repository's ability to assess your exercise and give feedback.**
 
 :warning: This exercise utilizes [GitHub Actions](https://docs.github.com/en/actions), which is free for public repositories and self-hosted runners, but may incur charges on private repositories. See _[About billing for GitHub Actions]_ to learn more.
 
