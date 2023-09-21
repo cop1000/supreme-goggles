@@ -1,43 +1,66 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/markdown
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/javascript-node
+// -
 {
-	"name": "Markdown Editing",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+    "name": "docs.github.com",
+    "build": {
+        "dockerfile": "Dockerfile",
+        // Update 'VARIANT' to pick a Node version
+        "args": { "VARIANT": "18" }
+    },
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "cSpell.language": ",en"
+    },
 
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {			
-			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"yzhang.markdown-all-in-one",
-				"streetsidesoftware.code-spell-checker",
-				"DavidAnson.vscode-markdownlint",
-				"shd101wyy.markdown-preview-enhanced",
-				"bierner.github-markdown-preview"
-			]
-		},
+    // Install features. Type 'feature' in the VS Code command palette for a full list.
+    "features": {
+        "sshd": "latest"
+    },
+
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            // Visual Studio Code extensions which help authoring for docs.github.com.
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "sissel.shopify-liquid",
+                "davidanson.vscode-markdownlint",
+                "bierner.markdown-preview-github-styles",
+                "streetsidesoftware.code-spell-checker",
+                "alistairchristie.open-reusables",
+                "GitHub.copilot",
+                "GitHub.copilot-chat"
+            ]
+        },
 		"codespaces": {
 			"repositories": {
-			  "cop1000/test-assign-halfaro1-teststudent": {
-				"permissions": {
-				  "permissions": "write-all"
+				"cop1000/test-assign-halfaro1-teststudent": {
+					"permissions": "write-all"
 				}
-			  }
 			}
-		  }
-	}
+		}
+    },
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [4000],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+    "portsAttributes": {
+        "4000": {
+            "label": "Preview",
+            "onAutoForward": "openPreview"
+        }
+    },
 
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "npm ci",
+
+    // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "node",
+	
+    "hostRequirements": {
+        "memory": "8gb"
+    }
 }
