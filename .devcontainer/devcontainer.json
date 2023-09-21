@@ -38,7 +38,9 @@
 		"codespaces": {
 			"repositories": {
 				"cop1000/test-assign-halfaro1-teststudent": {
-					"permissions": "write-all"
+					"permissions": {
+						"contents": "write"
+					}
 				}
 			}
 		}
